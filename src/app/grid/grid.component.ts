@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MyAppService } from '../my-app.service';
 import { Router } from '@angular/router';
-// import { HttpClient } from '@angular/common/http';
 import { AllCommunityModules } from "@ag-grid-community/all-modules";
 
 import * as XLSX from 'xlsx';
@@ -24,8 +23,8 @@ export class GridComponent {
   defaultColDef;
   rowSelection;
   columnDefs = [
-    { field: 'gansun', headerName: '간선명' },
-    { field: 'junju', headerName: '전주번호' },
+    { field: 'gansun', headerName: '간선명', minWidth: 90 },
+    { field: 'junju', headerName: '전주번호', minWidth: 90 },
     { field: 'date', headerName: '시공일' },
     { field: 'kikwan', headerName: '운용기관' },
     { field: 'name', headerName: '시공자' }
@@ -37,8 +36,7 @@ export class GridComponent {
 
   constructor(
     private myAppService: MyAppService,
-    private router: Router,
-    // private http: HttpClient
+    private router: Router
   ) {
     this.defaultColDef = {
       width: 150,
@@ -113,8 +111,8 @@ export class GridComponent {
       }
     }
     this.myAppService.sendPreviewData(this.previewData);
-    
-    if(this.previewData.length === 0) {
+
+    if (this.previewData.length === 0) {
       alert("선택한 항목이 없습니다. 미리보기를 원하는 항목을 선택하세요.");
       return 0;
     }
@@ -146,6 +144,27 @@ export class GridComponent {
     this.gridApi.updateRowData({
       remove: selectedData
     })
+  }
+
+  /* 그리드 사이즈 자동 변경 */
+  onGridSizeChanged(params) {
+    var gridWidth = document.getElementById("grid-wrapper").offsetWidth;
+    var columnsToShow = [];
+    var columnsToHide = [];
+    var totalColsWidth = 0;
+    var allColumns = params.columnApi.getAllColumns();
+    for (var i = 0; i < allColumns.length; i++) {
+      var column = allColumns[i];
+      totalColsWidth += column.getMinWidth();
+      if (totalColsWidth > gridWidth) {
+        columnsToHide.push(column.colId);
+      } else {
+        columnsToShow.push(column.colId);
+      }
+    }
+    params.columnApi.setColumnsVisible(columnsToShow, true);
+    params.columnApi.setColumnsVisible(columnsToHide, false);
+    params.api.sizeColumnsToFit();
   }
 }
 
