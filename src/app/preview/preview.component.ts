@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MyAppService } from '../my-app.service';
+import { Router } from '@angular/router'; //수정0315
 
 declare var $: any;
 
@@ -12,7 +13,8 @@ export class PreviewComponent implements OnInit {
   previewData;
 
   constructor(
-    private myAppService: MyAppService
+    private myAppService: MyAppService,
+    private router: Router //수정0315
   ) { }
   
   /* 초기화 */
@@ -48,8 +50,10 @@ export class PreviewComponent implements OnInit {
 
   /* 출력 */
   dataPrint() {
+    $('.document').css({"background":"url()"}); //수정0315
     setTimeout(() => {
       window.print();
+      this.router.navigateByUrl(''); //수정0315
     })
   }
 
