@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MyAppService } from '../my-app.service';
-import { Router } from '@angular/router'; //수정0315
+// import { Router } from '@angular/router'; //수정0315
 
 declare var $: any;
 
@@ -14,7 +14,7 @@ export class PreviewComponent implements OnInit {
 
   constructor(
     private myAppService: MyAppService,
-    private router: Router //수정0315
+    // private router: Router //수정0315
   ) { }
   
   /* 초기화 */
@@ -44,16 +44,15 @@ export class PreviewComponent implements OnInit {
       }
       $('.document').css("color", "black");
       $('.spinner-border').css("display", "none");
-      // $('.document').css({"background":"url('image/junju_img3.png')", 'background-repeat':'no-repeat'});
     });
   }
 
   /* 출력 */
   dataPrint() {
-    $('.document').css({"background":"url()"}); //수정0315
+    // $('.document').css({"background":"url()"}); //수정0315
     setTimeout(() => {
       window.print();
-      this.router.navigateByUrl(''); //수정0315
+      // this.router.navigateByUrl(''); //수정0315
     })
   }
 
