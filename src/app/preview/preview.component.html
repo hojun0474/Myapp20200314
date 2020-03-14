@@ -1,0 +1,22 @@
+<p class="h3">KT 전주번호</p>
+
+<div class="row">
+  <div class="col-auto mr-auto">
+    <button type="button" class="btn btn-outline-dark btn-sm" style="margin-right: 10px;" [routerLink]="['/']">이전 페이지</button>
+  </div>
+  <div class="col-auto">
+    <button type="button" class="btn btn-danger btn-sm" (click)="dataPrint()">프린터 출력</button>
+  </div>
+</div>
+
+<div class="spinner-border text-danger" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+
+<div class="document" id="doc{{i}}" *ngFor="let data of previewData; let i = index">
+  <div class="a"><div>{{ data.gansun }}</div></div>
+  <div class="b"><div>{{ data.junju }}</div></div>
+  <div class="c1"><div>{{ data.date }}</div></div>
+  <div class="c2"><div>{{ data.kikwan }}</div></div>
+  <div class="d"><div>{{ data.name }}</div></div>
+</div>

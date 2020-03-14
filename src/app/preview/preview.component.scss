@@ -1,0 +1,73 @@
+.document {
+  page-break-after: always;
+  margin-top: 119px;
+  line-height: 1.2;
+  color: transparent;
+  background: url('image/junju_img3.png');
+  background-repeat: no-repeat;
+}
+
+.document:last-child {
+  page-break-after: avoid;
+}
+
+.a {
+  width: 229px;
+  height: 153px;
+  // border: 1px solid black;
+  // overflow: hidden;
+  font-size: 150px;
+  font-weight: bold;
+
+  margin-left: 73px;
+}
+
+.b {
+  width: 229px;
+  height: 184px;
+  font-size: 150px;
+  font-weight: bold;
+
+  margin-left: 73px;
+}
+
+.c1 {
+  width: 229px;
+  height: 49px;
+  font-size: 100px;
+
+  margin-left: 73px;
+}
+
+.c2 {
+  width: 229px;
+  height: 49px;
+  font-size: 100px;
+
+  margin-left: 73px;
+}
+
+.d {
+  width: 300px;
+  height: 35px;
+  font-size: 100px;
+
+  margin-left: 55px;
+}
+
+@media print {
+  .h3 {
+    display: none;
+  }
+  .btn {
+    display: none;
+  }
+}
+
+.spinner-border {
+    display: block;
+    position: fixed;
+    z-index: 1031;
+    top: calc( 50% - ( 50px / 2));
+    right: calc( 50% - ( 50px / 2));
+}
